@@ -30,12 +30,13 @@ def telegram_bildirim_gonder(mesaj):
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
         "text": mesaj,
-        "parse_mode": "Markdown"
+        "parse_mode": "Markdown",
+        "disable_notification": False # Bildirimin yüksek sesle çıkmasını zorlar
     }
     try:
         res = requests.post(telegram_url, data=payload)
         if res.status_code == 200:
-            print("--> [BAŞARILI] Bildirim gönderildi!")
+            print("--> [BAŞARILI] Yüksek öncelikli bildirim gönderildi!")
     except Exception as e:
         print(f"--> [HATA] Bildirim hatası: {e}")
 
